@@ -11,11 +11,11 @@ export const insertionSort = (arrNumbers) => {
 	for (let i = 1; i < arrLength; i++) {
 		let keyValue = arrNumbers[i];
 		let prevIndex = i - 1;
-		while (prevIndex > 0 && arrNumbers[prevIndex] > keyValue) {
-			//swap(prevIndex, i, arrNumbers);
+		while (prevIndex >= 0 && arrNumbers[prevIndex] > keyValue) {
 			arrNumbers[prevIndex + 1] = arrNumbers[prevIndex];
 			prevIndex--;
 		}
-		arrNumbers[prevIndex + 1] = key;
+		arrNumbers[prevIndex + 1] = keyValue;
 	}
+	return arrNumbers;
 };
