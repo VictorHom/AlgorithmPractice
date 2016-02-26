@@ -9,3 +9,5 @@ describe('this works', function() {
 		expect(true).to.be.true;
 	});
 });
+
+// TODO : priority - create the tests that you want for insertion and selection sort;
