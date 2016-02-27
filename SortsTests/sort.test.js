@@ -1,7 +1,27 @@
 let expect = require('chai').expect;
 import { insertionSort } from '../Sorts/insertion';
+import { selectionSort } from '../Sorts/selection';
 
-// run npm test
+
+var cases = [
+	[],
+	[1],
+	[1, 2],
+	[9, 3],
+	[1, 2, 3],
+	[1, 4, 6, 3],
+	[6, 4, 3, 2, 1]
+];
+
+let cases_answers = [
+	[],
+	[1],
+	[1, 2],
+	[3, 9],
+	[1, 2, 3],
+	[1, 3, 4, 6],
+	[1, 2, 3, 4, 6]
+];
 
 /** initial test to make sure mocha and chai work */
 describe('this works', function() {
@@ -10,4 +30,26 @@ describe('this works', function() {
 	});
 });
 
-// TODO : priority - create the tests that you want for insertion and selection sort;
+// DRY OUT THE TEST SPECS
+const arrayTests = (cbFunction) =>{
+	expect(cbFunction(cases[0])).to.deep.equal(cases_answers[0]);
+	expect(cbFunction(cases[1])).to.deep.equal(cases_answers[1]);
+	expect(cbFunction(cases[2])).to.deep.equal(cases_answers[2]);
+	expect(cbFunction(cases[3])).to.deep.equal(cases_answers[3]);
+	expect(cbFunction(cases[4])).to.deep.equal(cases_answers[4]);
+	expect(cbFunction(cases[5])).to.deep.equal(cases_answers[5]);
+	expect(cbFunction(cases[6])).to.deep.equal(cases_answers[6]);
+}
+
+describe('this is testing insertion sort', () => {
+	it('should order the test cases', () => {
+		arrayTests(insertionSort);
+	});
+});
+
+
+describe('this is testing selection sort', () => {
+	it('should order the test cases', () => {
+		arrayTests(selectionSort);
+	});
+});
