@@ -1,6 +1,7 @@
 let expect = require('chai').expect;
 import { insertionSort } from '../Sorts/insertion';
 import { selectionSort } from '../Sorts/selection';
+import { bubbleSort } from '../Sorts/bubble';
 
 
 var cases = [
@@ -51,5 +52,11 @@ describe('this is testing insertion sort', () => {
 describe('this is testing selection sort', () => {
 	it('should order the test cases', () => {
 		arrayTests(selectionSort);
+	});
+});
+
+describe('this is testing bubble sort', () => {
+	it('should order the test cases', () => {
+		arrayTests(bubbleSort);
 	});
 });
