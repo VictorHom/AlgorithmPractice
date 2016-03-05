@@ -10,35 +10,29 @@ const merge = (listA, listB) => {
 	if (listA.length <= 1 || listB.length <= 1) {
 		if (listA.length === 1 && listB.length === 1) {
 			if (listA[0] > listB[0]) {
-				return listB.concat(listA);
+				return [...listB,...listA];
 			} else {
-				return listA.concat(listB);
+				return [...listA, ...listB];
 			}
 		} else {
 			// order does not matter because one is empty
-			return listA.concat(listB);
+			return [...listA,...listB];
 		}
 	} else {
 		let result = []
 		if (listA.length >= 1) {
-			result = result.concat(mergeSort(listA));
+			result = [...result, ...mergeSort(listA)];
 		}
 		if (listB.length >= 1) {
-			result = result.concat(mergeSort(listB));
+			result = [...result, ...mergeSort(listB)];
 		}
 		return result;
 	}
-	// else {
-	// 	return 
-	// }
-
 }
 
 export const mergeSort = (list) => {
 	let splitUp = split(list); 
-	var final = merge(splitUp[0], splitUp[1]);
-	console.log(final);
-	return final;
+	return merge(splitUp[0], splitUp[1]);
 }
 //split to smallest parts
 //combine 
