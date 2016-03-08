@@ -1,6 +1,6 @@
 // write an indexOf (input, query)
 // it will return  the index of the first letter of query if it exits
-
+require('babel-register');
 // take a look at writing that cool way of checking if two numbers add up to a particular number;
 const indexOf = (strValue, query) => {
 	for (let i = 0; i < strValue.length; i++) {

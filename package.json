@@ -4,7 +4,8 @@
   "description": "This will be a repo of algorithm problems based on the Introduction to Algorithms book by Leiserson, Stein, Rivest, and Cormen.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha SortsTests/sort.test.js -w --compilers js:babel-register"
+    "testSort": "mocha SortsTests/sort.test.js -w --compilers js:babel-register",
+    "testGeneral" : "mocha GeneralTests/stringPermutation.test.js -w --compilers js:babel-register"
   },
   "repository": {
     "type": "git",
@@ -17,7 +18,7 @@
     "url": "https://github.com/VictorHom/AlgorithmPractice/issues"
   },
   "dependencies": {
-    "babel-register": "^6.5.2",
+    "babel-register": "^6.6.5",
     "nodemon": "^1.8.1"
   },
   "devDependencies": {
