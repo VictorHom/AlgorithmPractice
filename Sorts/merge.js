@@ -37,3 +37,7 @@ export const mergeSort = (list) => {
 //split to smallest parts
 //combine 
 // merge sort is made up of a merge piece and a sort piece
+// I think the version below looks better for reading
+//https://github.com/nzakas/computer-science-in-javascript/blob/master/algorithms/sorting/merge-sort-recursive/merge-sort-recursive.js
+
+
