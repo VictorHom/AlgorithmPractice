@@ -11,8 +11,9 @@ const pivotSort = (arr, pivotIndex) => {
 	let pivotValue = arr[pivotIndex];
 
 	return arr.reduce((accumulator,elem)=> {
-		if (elem <= pivotValue) accumulator[0].push(elem);
-		else accumulator[1].push(elem);
+		if (elem <= pivotValue){
+		    accumulator[0].push(elem);
+		} else { accumulator[1].push(elem);}
 		return accumulator;
 	}, [lessThanEqualPivot, greaterThanPivot]);
 }
@@ -22,8 +23,11 @@ const conquer = (arr) => {
 	return quickSort(arr);
 }
 
+// does not handle cases where values are duplicated
 export const quickSort = (arr) => {
-	let pivotIndex = getRandomIntInclusive(0, arr.length);
+    console.log("arr length, ", arr);
+	let pivotIndex = getRandomIntInclusive(0, arr.length-1);
+	console.log(pivotIndex);
 	let dividedArr = pivotSort(arr, pivotIndex);
 	return [...conquer(dividedArr[0]), ...conquer(dividedArr[1])];
 
