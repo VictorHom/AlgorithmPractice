@@ -28,6 +28,7 @@ const coinChange = (n, m) => {
 
 }
 //BETTER
+// Can I do with the while loop version
 const coinChange = (amt, coins) => {
     // base case - if this coin can go into amt evenly, it counts as adding up to amt
     if (coins.length === 1) return ( (amt % coins[0]) === 0) ? 1 : 0;
