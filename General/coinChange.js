@@ -27,3 +27,13 @@ const coinChange = (n, m) => {
 	}
 
 }
+
+// function change(amount, coins) {
+//     if(coins.length === 1) return !(amount%coins[0]);
+//     var ways = 0;
+//     for(var i = 0; i*coins[0] <= amount; i++) {
+//         var otherCoins = coins.slice(1);
+//         ways += change(amount - i*coins[0], otherCoins);
+//     }
+//     return ways;
+// }
