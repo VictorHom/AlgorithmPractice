@@ -27,6 +27,18 @@ const coinChange = (n, m) => {
 	}
 
 }
+//BETTER
+const coinChange = (amt, coins) => {
+    // base case - if this coin can go into amt evenly, it counts as adding up to amt
+    if (coins.length === 1) return ( (amt % coins[0]) === 0) ? 1 : 0;
+    var ways = 0;
+    for(var i = 0; i*coins[0] <= amt; i++) {
+        var otherCoins = coins.slice(1);
+        ways += change(amt - i*coins[0], otherCoins);
+    }
+    return ways;
+}
+
 
 // function change(amount, coins) {
 //     if(coins.length === 1) return !(amount%coins[0]);
