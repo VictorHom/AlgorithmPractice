@@ -15,12 +15,22 @@
 
 const isPalPerm = (str) => {
 	let mapper = {};
+	let odd = false;
 	for (let i = 0; i < str.length; i++) {
 		if (!mapper[str[i]]) {
 			mapper[str[i]] = 1;
 		} else {
 			mapper[str[i]] = mapper[str[i]] + 1;
-		}
-		
+		}	
 	}
+
+	for (let key in mapper) {
+		if (mapper.hasOwnProperty(key)) {
+			if (mapper[key] % 2 === 1) {
+				if (odd) return false;
+				odd = true;
+			}
+		}
+	}
+	return true;
 }
