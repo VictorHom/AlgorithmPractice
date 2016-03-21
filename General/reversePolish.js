@@ -4,20 +4,27 @@ const rpn = (expression) => {
 	let queue = [];
 	let total = 0;
 	while (i < expression.length) {
-		if (typeof expression[i] === 'number'){
-			queue.push(expression[i]);
-		} else {
-			if(expression[i] === "+") {
+	    	if(expression[i] === "+") {
 				total = queue.shift() + queue.shift();
+				queue.push(total);
 			} else if (expression[i] === "-") {
 				total = queue.shift() - queue.shift();
+				queue.push(total);
 			} else if (expression[i] === "*") {
 				total = queue.shift() * queue.shift();
-			} else {
+				queue.push(total);
+			} else if (expression[i] === "/"){
 				total = queue.shift() / queue.shift();
+				queue.push(total);
+			} else {
+			    queue.push(parseInt(expression[i],10));
 			}
-			queue.push(total);
-		}
+
+
+        i++;
 	}
 	return total;
 }
+ // need to support spaces as the delimiter
+ // or better yet, split into an array by delimiter
+console.log(rpn("34+"))
