@@ -9,8 +9,16 @@ const rainCollector = (arr) => {
     }
   }
   // should have the highest point and index;
-  for (let j = highestPoint; i=j >= 0; j--) {
-    
+  for (let j = highestPoint; j >= 0; j--) {
+    // everything before the peak
+    for (let i = highestPointIndex; i >= 0 ; i--) {
+      
+
+    }
+    // everything past the peak
+    for (let i = arr.length; i >= highestPointIndex; i--) {
+
+    }
   }
 
 }
