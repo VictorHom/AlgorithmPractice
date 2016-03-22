@@ -13,22 +13,26 @@ const rainCollector = (arr) => {
 //   console.log(highPoint);
 //   console.log(highPointIndex);
 
-  for (let i = 0; i >= 0; i--) {
+  for (let i = highPoint; i >= 0; i--) {
     let compareLowerIndex = highPointIndex;
     let compareUpperIndex = highPointIndex;
+ console.log("high point:", i )
+    for (let j = highPointIndex-1; j >= 0; j--) {
 
-    for (let j = highPoint; j >= 0; j--) {
-        console.log("current j:", j )
-      if (arr[j] === i && compareLowerIndex !== j) {
-          console.log("Lowerindex:", compareLowerIndex)
+      if (arr[j] === i) {
+        //   console.log("Lowerindex:", compareLowerIndex)
+        //   console.log("j: innner:", j)
+          console.log("total:",(compareLowerIndex - j - 1))
         total = total + (compareLowerIndex - j - 1);
+        // not changing this quick enough
         compareLowerIndex = j;
       }
     }
 
-    for (let j = highPointIndex; j < arr.length; j++) {
-        console.log("upper index:", compareUpperIndex)
-      if (arr[j] > i && compareUpperIndex !== j) {
+    for (let j = highPointIndex+1; j < arr.length; j++) {
+        // console.log("upper index:", compareUpperIndex)
+      if (arr[j] === i) {
+          console.log("total:",  (j - compareUpperIndex - 1))
         total = total + (j - compareUpperIndex - 1)
         compareUpperIndex = j;
       }
