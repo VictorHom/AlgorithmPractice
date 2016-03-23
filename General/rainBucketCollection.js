@@ -43,3 +43,4 @@ const rainCollector = (arr) => {
 }
 rainCollector([0,1,0,2,1,0,1,3,2,1,2,1]);
 // rainCollector([2,1,2])
+// https://repl.it/By9m
