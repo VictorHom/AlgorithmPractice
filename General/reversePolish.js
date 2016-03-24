@@ -1,5 +1,6 @@
 // assumption is that input is correct with non spaces
 const rpn = (expression) => {
+  expression = expression.split(" ");
 	let i = 0;
 	let queue = [];
 	let total = 0;
@@ -19,9 +20,7 @@ const rpn = (expression) => {
 			} else {
 			    queue.push(parseInt(expression[i],10));
 			}
-
-
-        i++;
+      i++;
 	}
 	return total;
 }

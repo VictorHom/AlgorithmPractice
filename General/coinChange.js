@@ -22,7 +22,7 @@ const coinChange = (n, m) => {
 		}
 		// subtract the max amount
 		// if it becomes zero, 1 + cool subCoinChange(n, m.slice(0,m.length-1));
-		// else 
+		// else
 		return numberOfWays + subCoinChange(n, m.slice(0, m.length-1))
 	}
 
