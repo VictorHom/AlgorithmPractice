@@ -27,3 +27,5 @@ const totalDrinks = (spendingAmount, priceBeer, numToRedeemFreeBeer) => {
 }
 
 console.log(totalDrinks(10,1, 5)) //12
+
+// next do it recursively

@@ -24,6 +24,9 @@ export const stringPermutation = (str) => {
 }
 
 
+
+
+
 // permutation - order matters; I can filter out the smaller subsequences
 // combination - order does not matter;
 // test
@@ -68,4 +71,64 @@ export const stringPermutation = (str) => {
 //         return perm !== sorted[i+1];
 //     });
 // }
+
+// another approach on 4/30
+function strPermutation(str) {
+	if (str.length === 1) return [str];
+	
+	return str.split("").reduce(function(acc, start, startIndex, arr) {
+		console.log("here")
+		let temp = [];
+		acc.forEach(function(ss) {
+			for (var i = 0; i < ss.length; i++) {
+				temp.push(ss.slice(0,i) + start + ss.slice(i))	
+			}
+		})
+		return acc.concat(temp);	
+		
+		
+	}, [' '])
+}
+// results have an extra space at the end
+// can filter and map if I really wanted to
+// [ ' ',
+//   'a ',
+//   'b ',
+//   'ba ',
+//   'ab ',
+//   'c ',
+//   'ca ',
+//   'ac ',
+//   'cb ',
+//   'bc ',
+//   'cba ',
+//   'bca ',
+//   'bac ',
+//   'cab ',
+//   'acb ',
+//   'abc ' ]
+
+// console.log(strPermutation("a"));
+// console.log(strPermutation("ab"));
+
+// ANOTHER WAY
+// function strPermutation(str) {
+// 	if (str.length === 1) return [str];
+	
+// 	return str.slice(1).split("").reduce(function(acc, start, startIndex, arr) {
+// 		console.log("here")
+// 		let temp = [];
+// 		acc.forEach(function(ss) {
+// 			temp.push(start + ss);
+// 			for (var i = 0; i < ss.length; i++) {
+// 				temp.push(ss.slice(0,i) + start + ss.slice(i))	
+// 			}
+// 		})
+// 		return acc.concat(temp);	
+		
+		
+// 	}, [str.slice(0,1)])
+// }
+
+//[ 'a', 'ba', 'ba', 'ca', 'ca', 'cba', 'cba', 'bca', 'cba', 'cba', 'bca' ]
 
