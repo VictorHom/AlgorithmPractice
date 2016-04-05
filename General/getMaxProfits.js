@@ -6,29 +6,9 @@
 // each index represent a minute from 9:30 when the market opens
 
 // where is the greatest profit located if you buy one sell
-// this doesn't work right
-// const getMaxProfit = (stockPrices) => {
-// 	let profits = 0;
-//
-// 	let i = 0, j = stockPrices.length-1;
-// 	while (i != j) {
-// 		let buyOne = stockPrices[i];
-// 		let sellOne = stockPrices[j];
-// 		if ((sellOne - buyOne) > 0) {
-// 			if (profits < (sellOne - buyOne)) {
-// 				profits = sellOne - buyOne;
-// 			}
-// 			i++;
-// 		} else {
-// 			j--;
-// 		}
-// 	}
-//
-// 	return profits;
-// }
 
 var getMaxProfit = arr => {
-    let min = Infinity;
+    let min = arr[0];
     let maxProf = 0;
     arr.forEach(num => {
         if (num < min) min = num;
