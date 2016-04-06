@@ -1,6 +1,7 @@
 // array of points can be a an array of n dimensions
 // depth should be called with zero the first time
 // good for nearest neigbor searches
+// range searches and nearest neighbor searches
 const kdtree = (arrOfPoints, depth = 0) => {
 
 
