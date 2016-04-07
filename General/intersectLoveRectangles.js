@@ -3,7 +3,11 @@
 // pass in a rectangle and the other rectangle's points
 const containsAtLeastOnePoint = (rect, overLapperPoints) => {
   for (let i = 0; i < overLapperPoints.length; i++) {
-
+    if (overLapperPoints[i][0] >= rect.leftX && overLapperPoints[i][0] <= rect.leftX + rect.width) {
+      if (overLapperPoints[i][1] >= rect.leftY && overLapperPoints[i][1] <= rect.leftY + rect.height) {
+        return true;
+      }
+    }
   }
   return false;
 }
