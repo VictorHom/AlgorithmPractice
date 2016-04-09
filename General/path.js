@@ -13,6 +13,12 @@ class Node {
     this.visited = false;
   }
 }
+
+const clearVisitStatus = (arr) => {
+  arr.forEach( node => {
+    node.visited = false;
+  })
+}
 // create a function that will construct a graph for you given
 // a list of 2 tuple arrays [[1,2], [2,3]] =>
 // node 1 leads to 2 and node 2 leads to 3
@@ -44,3 +50,21 @@ const BFSPath = (start, destination) => {
 
   return false;
 }
+
+var node1 = new Node(1);
+var node2 = new Node(2);
+var node3 = new Node(3);
+var node4 = new Node(4);
+var node5 = new Node(5);
+
+node1.neighbors.push(node2, node3)
+node3.neighbors.push(node4);
+node4.neighbors.push(node1);
+
+console.log(DFSPath(node1, node1))
+clearVisitStatus([node1, node2, node3, node4, node5]);
+console.log(DFSPath(node1, node2))
+clearVisitStatus([node1, node2, node3, node4, node5]);
+console.log(DFSPath(node1, node4))
+clearVisitStatus([node1, node2, node3, node4, node5]);
+console.log(DFSPath(node1, node5))
