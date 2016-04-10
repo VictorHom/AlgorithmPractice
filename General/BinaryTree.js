@@ -19,6 +19,41 @@
 // both full and complete
 // all leaf nodes will be at the same level, and this level
 // will have max number of nodes
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.leftChild;
+    this.rightChild;
+  }
+
+  get left() {
+    return this.leftChild;
+  }
+
+  get right() {
+    return this.rightChild;
+  }
+
+  set left(node) {
+    this.leftChild = node;
+    return this.leftChild;
+  }
+
+  set right(node) {
+    this.rightChild = node;
+    return this.rightChild;
+  }
+}
+
+// given a list of numbers, create a bst
+// return the head (root) node
+const createBST = (arr) => {
+  let queue = [];
+  for (let i = 0; i < arr.length; i++) {
+    
+  }
+}
+
 
 // BST traversals
 // In-Order Traversals - vist left branch, current node, then right
