@@ -41,7 +41,8 @@ const BFSPath = (start, destination) => {
   queue.push(start);
   while (queue.length !== 0) {
     let currentNode = queue.shift();
-    if (start === destination) return true;
+    currentNode.visited = true;
+    if (currentNode === destination) return true;
     let neighbors = currentNode.neighbors;
     neighbors.forEach((neighbor) => {
       if (!neighbor.visited) queue.push(neighbor)
@@ -67,4 +68,12 @@ console.log(DFSPath(node1, node2))
 clearVisitStatus([node1, node2, node3, node4, node5]);
 console.log(DFSPath(node1, node4))
 clearVisitStatus([node1, node2, node3, node4, node5]);
-console.log(DFSPath(node1, node5))
+console.log(!DFSPath(node1, node5))
+
+console.log(BFSPath(node1, node1))
+clearVisitStatus([node1, node2, node3, node4, node5]);
+console.log(BFSPath(node1, node2))
+clearVisitStatus([node1, node2, node3, node4, node5]);
+console.log(BFSPath(node1, node4))
+clearVisitStatus([node1, node2, node3, node4, node5]);
+console.log(!BFSPath(node1, node5))
