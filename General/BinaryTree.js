@@ -47,10 +47,40 @@ class Node {
 
 // given a list of numbers, create a bst
 // return the head (root) node
-const createBST = (arr) => {
-  let queue = [];
-  for (let i = 0; i < arr.length; i++) {
-    
+const createBST = (arr, headNode) => {
+  // set up a headnode
+  if (headNode === undefined) {
+    let rootNode = new Node(arr.slice(0,1));
+    return createBST(arr.slice(1), rootNode)
+  // base case where there is no more leaves to insert
+  } else if (arr.length === 0){
+    return headNode;
+  } else {
+    // nextNode is used, but if it isnt defined, then use nextNode
+    var checker = nextNode || headNode;
+    var currentValue = arr.slice(0,1);
+
+    if (checker === headNode) {
+      if (checker.data > currentValue) {
+        checker.rightChild = new Node(currentvalue);
+      } else {
+        checker.leftChild = new Node(currentvalue);
+      }
+    } else {
+      if (checker.data > currentValue) {
+
+      } else {
+        
+      }
+    }
+
+    ///////////
+    if (checker.data > currentValue) {
+
+    } else {
+
+    }
+    //////////
   }
 }
 
