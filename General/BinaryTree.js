@@ -57,33 +57,44 @@ const createBST = (arr, headNode) => {
     return headNode;
   } else {
     // nextNode is used, but if it isnt defined, then use nextNode
-    var checker = headNode;
-    var currentValue = arr.slice(0,1);
+    let checker = headNode;
+    let currentValue = arr.slice(0,1);
+    let added = false;
 
-    while (!checker.leftChild || !checker.rightChild) {
+    while (!added) {
       if (currentValue <= checker.data) {
         if (checker.leftChild) {
           checker = checker.leftChild;
         } else {
           checker.leftChild = new Node(currentValue);
+          added = true;
         }
       } else if (currentValue > checker.data){
         if (checker.rightChild) {
           checker = checker.rightChild;
         } else {
           checker.rightChild = new Node(currentValue);
+          added = true;
         }
       }
     }
 
-    ///////////
-    if (checker.data > currentValue) {
-
-    } else {
-
-    }
-    //////////
+    return createBST(arr.slice(1), headNode);
   }
+}
+
+// alternatively, if the array is unsorted, you can sort it
+// and create an array where you keep picking out the middle 3 values for array set up
+
+// if arr is sorted
+// and you wanted to create a balanced tree
+const createBalanceBST = (arr) => {
+  if (arr.length === 0) return;
+  var middlePoint = Math.floor(arr.length / 2);
+  var headNode = new Node(arr[middlePoint]);
+  headNode.leftChild = createBalanceBST(arr.slice(0, middlePoint))
+  headNode.rightChild = createBalanceBST(arr.slice(middlePoint + 1));
+  return headNode;
 }
 
 
