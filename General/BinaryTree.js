@@ -57,20 +57,22 @@ const createBST = (arr, headNode) => {
     return headNode;
   } else {
     // nextNode is used, but if it isnt defined, then use nextNode
-    var checker = nextNode || headNode;
+    var checker = headNode;
     var currentValue = arr.slice(0,1);
 
-    if (checker === headNode) {
-      if (checker.data > currentValue) {
-        checker.rightChild = new Node(currentvalue);
-      } else {
-        checker.leftChild = new Node(currentvalue);
-      }
-    } else {
-      if (checker.data > currentValue) {
-
-      } else {
-        
+    while (!checker.leftChild || !checker.rightChild) {
+      if (currentValue <= checker.data) {
+        if (checker.leftChild) {
+          checker = checker.leftChild;
+        } else {
+          checker.leftChild = new Node(currentValue);
+        }
+      } else if (currentValue > checker.data){
+        if (checker.rightChild) {
+          checker = checker.rightChild;
+        } else {
+          checker.rightChild = new Node(currentValue);
+        }
       }
     }
 
