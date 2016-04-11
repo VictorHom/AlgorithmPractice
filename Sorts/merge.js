@@ -1,3 +1,5 @@
+// merge sort has  an average and worst case of O(n log n)
+
 const split = (list) => {
 	let midPoint = Math.floor(list.length / 2);
 	let leftArray = list.slice(0 , midPoint);
@@ -31,13 +33,11 @@ const merge = (listA, listB) => {
 }
 
 export const mergeSort = (list) => {
-	let splitUp = split(list); 
+	let splitUp = split(list);
 	return merge(splitUp[0], splitUp[1]);
 }
 //split to smallest parts
-//combine 
+//combine
 // merge sort is made up of a merge piece and a sort piece
 // I think the version below looks better for reading
 //https://github.com/nzakas/computer-science-in-javascript/blob/master/algorithms/sorting/merge-sort-recursive/merge-sort-recursive.js
-
-
