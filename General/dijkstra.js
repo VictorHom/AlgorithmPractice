@@ -29,7 +29,7 @@ const clearVisits = (arrOfNodes) => {
     elem.visited = false;
   })
 };
-
+// min heap implementation
 // dijkstra is a breadth first search
 const dijkstraSearch = (src, dest) => {
   // using the array as a queue, so will shift and push on
