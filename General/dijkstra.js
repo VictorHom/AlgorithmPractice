@@ -4,13 +4,23 @@
 
 
 class Node {
-  constructor(distance, name) {
+  constructor(name, distanceTos) {
     this.name = name;
-    this.distance;
+    this.distance = distanceTos;
+    // the distanceTos should be used
+    // neighbors should array of [nodes/name of node, "distance" to node]
     this.neighbors = [];
     this.visited = false;
   }
 }
+
+let nodeB = new Node("B", [["D", 1]]);
+let nodeC = new Node("C", [["D", 2]]);
+let nodeD = new Node("D", [["A", 5]]); // should have no effects;
+let nodeA = new Node("A", [["B", 1], ["C", 2]]);
+
+// let nodeE = new Node(4, "E");
+// let nodeG = new Node(4, "G"); // g for goal
 
 // to be used between consecutive test cases
 // that will use the same nodes
@@ -32,11 +42,17 @@ const dijkstraSearch = (src, dest) => {
     let currentNode = queue.shift();
     currentNode.visited = true;
     currentNode.distance = currentNode.distance || 0;
-    let unvisitedSet = currentNode.neighbors;
+    let unvisitedSet = currentNode.neighbors.filter(elem => {
+      // only use unvisited nodes, because otherwise you can end up in a cycle
+      return !elem.visited;
+    });
     // set the distance for each of the nodes
     unvisitedSet.forEach( node => {
-      node.distance = currentNode.distance + node.distance || 0; //it shouldn't need || 0 but since I am writing this cold
-    })
+      let tentativeDistance = currentNode.distance + (node.distance || 0);
+      // if the calculated tentative distance is greater than  the current distance on the node, then it's a better option
+      node.distance = node.distance > tentativeDistance ? tentativeDistance : node.distance; //it shouldn't need || 0 but since I am writing this cold
+    });
+    queue = queue.concat(unvisitedSet);
   }
 }
 // dijkstra's algorithm
