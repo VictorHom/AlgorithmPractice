@@ -24,10 +24,19 @@ const clearVisits = (arrOfNodes) => {
 const dijkstraSearch = (src, dest) => {
   // using the array as a queue, so will shift and push on
   let queue = [];
-  let srcNeighbors = src.neighbors;
-  queue = queue.concat(srcNeighbors);
+  // let srcNeighbors = src.neighbors;
+  queue = queue.push(src);
+  // src.visited = true;
+  // let currentNode;
   while (queue.length !== 0) {
-    
+    let currentNode = queue.shift();
+    currentNode.visited = true;
+    currentNode.distance = currentNode.distance || 0;
+    let unvisitedSet = currentNode.neighbors;
+    // set the distance for each of the nodes
+    unvisitedSet.forEach( node => {
+      node.distance = currentNode.distance + node.distance || 0; //it shouldn't need || 0 but since I am writing this cold
+    })
   }
 }
 // dijkstra's algorithm
