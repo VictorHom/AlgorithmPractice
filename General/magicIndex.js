@@ -53,7 +53,10 @@ const nondistinctMagicIndex = (arr, incrementIndex = 0) => {
 		// v 3  3 5
 		// it can only be everything on the right set
 		let right = distinctMagicIndex(arr.slice(halfIndex+1), halfIndex + 1 + incrementIndex);
-		let left = distinctMagicIndex(arr.slice(0,halfIndex));
+		let left = distinctMagicIndex(arr.slice(0,arr[halfIndex])); // note the arr[halfIndex]
+    // this is because we now know that all lower values have to be at least up until arr[index]
+    // A[5] = 3
+    // the only next match has to be at A[3] = 3 or less :)
 		return [right, left].includes(true);
 	} else if ((halfIndex + incrementIndex) < arr[halfIndex]) {
 		// 5 i 6 7 8
