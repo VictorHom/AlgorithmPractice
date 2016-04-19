@@ -1,13 +1,16 @@
 // var stockPricesYesterday = [10, 7, 5, 8, 11, 9];
 
 // getMaxProfit(stockPricesYesterday);
-// returns 6 (buying for $5 and selling for $11)
+// returns 6 (buying for $5 ana  selling for $11)
 
 // each index represent a minute from 9:30 when the market opens
 
 // where is the greatest profit located if you buy one sell
 
 const getMaxProfit = (stockPrices) => {
+
+	let testingInvim = 0;
+	
 	let profits = 0;
 
 	let i = 0, j = stockPrices.length-1;
