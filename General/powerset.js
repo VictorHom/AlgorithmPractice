@@ -24,5 +24,6 @@ const powerSet = (set) => {
   generateSet(set);
   return bigsets;
 }
+// make recursive
 
 console.dir(JSON.stringify(powerSet([1,2,3])))
