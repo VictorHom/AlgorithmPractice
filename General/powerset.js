@@ -10,19 +10,19 @@ const powerSet = (set) => {
     return set;
   }
   let bigsets = [""];
-  // recursive call to generate sets
   const generateSet = (set) => {
-    let subset = [];
-    set.forEach((elem) => {
-      bigsets.forEach(oset => {
-        subset.push([...[oset],...[elem]]);
-      });
-     	bigsets.push(subset);
-      subset = [];
-    });
+  	set.forEach((elem) => {
+  		let tempContainer = []
+  		bigsets.forEach((bigset) => {
+  			let temp = [...bigset,elem];
+  			tempContainer.push(temp);
+  		})
+  		bigsets = bigsets.concat(tempContainer);
+  		tempContainer = [];
+  	})
   }
   generateSet(set);
-  return bigsets;
+  return bigsets.slice(1);
 }
 // make recursive
 
