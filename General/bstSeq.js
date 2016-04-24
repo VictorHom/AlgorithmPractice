@@ -3,7 +3,6 @@
 const generateCombinations = (arr) => {
 	let results = [];
 	for (let i = 0; i < arr.length; i++) {
-		console.log("results:", results)
 		if (i === 0) {
 			results.push([arr[i]]);
 		} else{
