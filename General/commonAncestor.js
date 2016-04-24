@@ -7,36 +7,45 @@
 // far off
 //
 
-// this checks that the immediate child is nodeA and nodeB
-const checkImmediate = (nodeA, nodeB, head) => {
-	aChild = false;
-	bChild = true
-	if (head.left === nodeA || head.right === nodeA) {
-		aChild = true;
+const commonAncestor = (nodeA, nodeB, head) => {
+	if (head === null) {
+		return null;
+	} else if (!covers(nodeA, head)) {
+		return null;
+	} else if (!covers(nodeB, head)) {
+		return null;
 	}
-	if (head.left === nodeB || head.right === nodeB) {
-		bChild = true;
-	}
-	return aChild && bChild;
+	return helperAncestorFinder(nodeA, nodeB, head);
 }
 
-const firstCommonAncestor = (nodeA, nodeB, head) => {
-	let queue =  [];
-	let ancestorOrder = [];
-	queue.push(head);
-	while (queue.length !== 0){
-		let current =  queue.shift();
-		if (checkImmediate(nodeA, nodeB, current)) {
-			return current;
-		} else if (current.left === nodeA || current.right === nodeA){
-			return firstCommonAncestor(nodeA, nodeB, current);
-		} else if (current.left === nodeB || current.right === nodeB){
-			return ancestorOrder.pop() // or is it the shift
-		}
-		else {
-			ancestorOrder.push(current);
-			queue.push(current.left)
-			queue.push(current.right)
+function helperAncestorFinder(nodeA, nodeB, head) {
+	if (head === null) {
+		return null
+	} else if (nodeA === head) {
+		return head;
+	} else if (nodeB === head) {
+		return head;
+	}
+
+	let nodeRightSide = covers(nodeA, head.right);
+	let nodeBSide = covers(nodeB, head.right);
+	if (nodeRightSide !== nodeBSide) {
+		return head;
+	} else {
+		if (nodeRightSide) {
+			return commonAncestor(nodeA, nodeB, head.right);
+		} else {
+			return commonAncestor(nodeA, nodeB, head.left);
 		}
 	}
+}
+
+function covers(questionNode, startPoint) {
+	if (startPoint === null) {
+		return false;
+	}
+	if (questionNode === startPoint) {
+		return true;
+	}
+	return covers(questionNode, startPoint.right) || covers(questionNode, startPoint.left);
 }
