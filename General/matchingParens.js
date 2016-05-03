@@ -21,6 +21,7 @@ const matchParens = (num) => {
 						let elem = masterList[j];
 						let modParens = elem.slice(0, k+1) + "()" + elem.slice(k+1);
 						if (newMasterList.indexOf(modParens) === -1) {
+              // the fact that I have to do this indexOf means I am double doing
 							newMasterList.push(modParens);
 						}
 					}
