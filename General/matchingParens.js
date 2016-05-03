@@ -43,3 +43,20 @@ console.log(matchParens(4))
 // recursive
 //  i imagine a recursive solution that passes the masterlist around
 // and returns when num is 0, but that isn't impressive or that much better
+const matchingParensRecursive = (num) => {
+
+  const matchingParens = (left, right, result) => {
+    if (left === 0 && right === 0) {
+      console.log(result);
+    }
+    if (left > 0) {
+      matchingParens(left-1, right + 1, result+"(");
+    }
+    if (right > 0) {
+      matchingParens(left, right - 1, result+")");
+    }
+  }
+  matchingParens(3,0,"");
+}
+
+matchingParensRecursive(2);

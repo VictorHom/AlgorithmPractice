@@ -83,6 +83,7 @@ const coinChange = (denoms, amt) => {
 		return Math.min.apply(null, coinCount);
 	}
 	return getMinCoins(denoms, amt);
-
 }
-console.log(coinChange([1,4,25,5],33))
+console.log(coinChange([1,4,25,5],33));
+
+// another way to do this problem with short cirtcuit
