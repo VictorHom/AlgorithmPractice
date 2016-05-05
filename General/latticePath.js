@@ -29,13 +29,13 @@ const latticePathMemo = (max, x, y) => {
 	let xDir = 0;
 	let yDir = 0;
 	if (!memo[(x+1).toString() + y.toString()]){
-		xDir = latticePath(max, x + 1, y)
+		xDir = latticePathMemo(max, x + 1, y)
 		memo[(x+1).toString() + y.toString()] = xDir;
 	} else {
 		xDir = memo[(x+1).toString() + y.toString()]
 	}
 	if (!memo[(x).toString() + (y+1).toString()]){
-		yDir = latticePath(max, x, y+1)
+		yDir = latticePathMemo(max, x, y+1)
 		memo[x.toString() + (y+1).toString()] = yDir;
 	} else {
 		yDir = memo[x.toString() + (y+1).toString()]
