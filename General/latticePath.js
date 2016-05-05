@@ -6,7 +6,7 @@
 // 	while (horizonal < x) {
 // 		total = total + latticePath(x-1, y);
 // 		horizonal = horizonal + 1;
-// 	} 
+// 	}
 // 	while (vertical < y) {
 // 		total = total + latticePath(x, y-1);
 // 		vertical = vertical + 1;
@@ -14,8 +14,34 @@
 // 	return total;
 // }
 
-const latticePath = (max, x, y) => { 
+const latticePath = (max, x, y) => {
 	x = x || 0, y = y || 0;
 	if (x === max || y === max) return 1;
 	return latticePath(max, x + 1, y) + latticePath(max, x , y + 1);
 }
+
+let n = 0
+let memo = {};
+const latticePathMemo = (max, x, y) => {
+	n++;
+	x = x || 0, y = y || 0;
+	if (x === max || y === max) return 1;
+	let xDir = 0;
+	let yDir = 0;
+	if (!memo[(x+1).toString() + y.toString()]){
+		xDir = latticePath(max, x + 1, y)
+		memo[(x+1).toString() + y.toString()] = xDir;
+	} else {
+		xDir = memo[(x+1).toString() + y.toString()]
+	}
+	if (!memo[(x).toString() + (y+1).toString()]){
+		yDir = latticePath(max, x, y+1)
+		memo[x.toString() + (y+1).toString()] = yDir;
+	} else {
+		yDir = memo[x.toString() + (y+1).toString()]
+	}
+	return  xDir + yDir;
+}
+
+console.log(latticePathMemo(2))
+console.log(n)
