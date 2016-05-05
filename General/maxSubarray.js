@@ -64,3 +64,5 @@ console.log(maxContSum([-1,2,3]) === 5)
 console.log(maxContSum([-1,-2,-3]) === -1) // -1 ?
 console.log(maxContSum([-2,-2,-2]) === -2) // -2 ?
 console.log(maxContSum([1,2,3,-5,7,8,-3]) === 15)
+
+//make an improvement to also return the sub array as well
