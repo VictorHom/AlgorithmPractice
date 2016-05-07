@@ -15,7 +15,9 @@
 function Node(val, priority) {
   this.data = val;
   this.priority = priority;
-  // left and right will be Node;
-  this.left;
-  this.right;
+  this.next;
+}
+
+function PriorityQueue(){
+  this.first;
 }
