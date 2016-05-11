@@ -66,3 +66,42 @@ console.log(maxContSum([-2,-2,-2]) === -2) // -2 ?
 console.log(maxContSum([1,2,3,-5,7,8,-3]) === 15)
 
 //make an improvement to also return the sub array as well
+
+
+// iterative approach that does not use recursion
+const maxSubArrayIterative = (arr) => {
+  let i = 0;
+  let min = 0;
+  while(arr[i] < 0) {
+    if (i == 0) min = arr[i];
+    min = min < arr[i] ? arr[i] : min;
+    i++;
+  }
+  if (i === arr.length) {
+  	return min;
+  }
+  // this deals with all negative
+  // otherwise, we are dealing with a case where we can loop through the data;
+  let currentMax = 0;
+  let previousMax = 0;
+  //console.log("here:", i)
+  for (let j = i; j < arr.length; j++){
+    if (arr[j] + currentMax > currentMax) {
+      currentMax = currentMax + arr[j];
+    } else {
+      // that means the current value is a negative and makes the value less
+      previousMax = previousMax > currentMax ? previousMax : currentMax;
+      currentMax = 0;
+    }
+  }
+
+  return previousMax > currentMax ? previousMax : currentMax;
+  // we always start with a non negative value if possible
+}
+
+console.log(maxSubArrayIterative([1,2,3])=== 6 )//
+console.log(maxSubArrayIterative([-1,2,3]) === 5)
+console.log(maxSubArrayIterative([-1,-2,3]) === 3)
+console.log(maxSubArrayIterative([-1,-2,-3]) === -1 ) // -1 ?=== -1
+console.log(maxSubArrayIterative([-2,-2,-2]) === -2) // -2 ?=== -2
+console.log(maxSubArrayIterative([1,2,3,-5,7,8,-3]) === 15)
