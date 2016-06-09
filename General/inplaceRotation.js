@@ -1,3 +1,4 @@
+// O(n^2)
 function inplaceRotation(arr){
 	let traverseLen = Math.floor(arr.length/2);
 	let arrLen = arr.length;
@@ -19,10 +20,11 @@ function inplaceRotation(arr){
 		arr[coordinateB.x][coordinateB.y] = temp;
 	}
 
-		// this going half way diagonally
+	// this going half way diagonally
 	for(let i = 0; i < traverseLen; i++){
-
-		for(let j = i; j < arr[0].length-i; j++){
+    // subtract 1 because you will have already swapped the first corner from the first index
+    // subtract i because on each row traversal, you do slightly less since you will have already swapped
+		for(let j = i; j < arr[0].length-i-1; j++){
 			// pivot point to always swap with;
 			let x = i;
 			let y = j;
@@ -43,3 +45,7 @@ function inplaceRotation(arr){
 
 let arr = [[1,2,3], [4,5,6], [7,8,9]];
 console.log(inplaceRotation(arr));
+let arrB = [[1,2],[3,4]];
+console.log(inplaceRotation(arrB));
+let arrC = [[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]];
+console.log(inplaceRotation(arrC));
